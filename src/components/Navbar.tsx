@@ -31,11 +31,11 @@ const Navbar = () => {
                 Destination Slovenia
                 <ChevronDown className="ml-1 h-4 w-4" />
               </Link>
-              <div className="absolute hidden group-hover:block w-48 bg-white dark:bg-primary-dark shadow-lg rounded-md mt-2">
-                <Link to="/destinations/julian-alps" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-primary">Julian Alps</Link>
-                <Link to="/destinations/kamnik-alps" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-primary">Kamnik-Savinja Alps</Link>
-                <Link to="/destinations/karavanke" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-primary">Karavanke</Link>
-                <Link to="/destinations/pohorje" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-primary">Pohorje</Link>
+              <div className="absolute hidden group-hover:block w-48 bg-white dark:bg-primary-dark shadow-lg rounded-md mt-2 transition-all duration-300">
+                <Link to="/destinations/julian-alps" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-primary transition-colors duration-200">Julian Alps</Link>
+                <Link to="/destinations/kamnik-alps" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-primary transition-colors duration-200">Kamnik-Savinja Alps</Link>
+                <Link to="/destinations/karavanke" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-primary transition-colors duration-200">Karavanke</Link>
+                <Link to="/destinations/pohorje" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-primary transition-colors duration-200">Pohorje</Link>
               </div>
             </div>
 
@@ -44,13 +44,14 @@ const Navbar = () => {
                 Experiences
                 <ChevronDown className="ml-1 h-4 w-4" />
               </Link>
-              <div className="absolute hidden group-hover:block w-48 bg-white dark:bg-primary-dark shadow-lg rounded-md mt-2">
-                <Link to="/experiences/hiking" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-primary">Hiking</Link>
-                <Link to="/experiences/via-ferrata" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-primary">Via Ferrata</Link>
-                <Link to="/experiences/biking" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-primary">Mountain Biking</Link>
-                <Link to="/experiences/climbing" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-primary">Rock Climbing</Link>
-                <Link to="/experiences/water" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-primary">Water Experiences</Link>
-                <Link to="/experiences/wind" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-primary">Wind Adventures</Link>
+              <div className="absolute hidden group-hover:block w-48 bg-white dark:bg-primary-dark shadow-lg rounded-md mt-2 transition-all duration-300">
+                <Link to="/experiences/hiking" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-primary transition-colors duration-200">Hiking</Link>
+                <Link to="/experiences/via-ferrata" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-primary transition-colors duration-200">Via Ferrata</Link>
+                <Link to="/experiences/biking" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-primary transition-colors duration-200">Mountain Biking</Link>
+                <Link to="/experiences/climbing" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-primary transition-colors duration-200">Rock Climbing</Link>
+                <Link to="/experiences/water" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-primary transition-colors duration-200">Water Experiences</Link>
+                <Link to="/experiences/wind" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-primary transition-colors duration-200">Wind Adventures</Link>
+                <Link to="/experiences/trips" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-primary transition-colors duration-200">Trips</Link>
               </div>
             </div>
 
