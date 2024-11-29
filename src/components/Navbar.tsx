@@ -24,13 +24,14 @@ const Navbar = () => {
 
   const handleMouseLeave = (event: React.MouseEvent<HTMLDivElement>) => {
     const dropdown = event.currentTarget.querySelector(".submenu");
-    if (dropdown) {
-      // Add a delay before hiding the submenu
+    const currentTarget = event.currentTarget;
+    
+    if (dropdown && currentTarget) {
       setTimeout(() => {
-        if (!event.currentTarget.matches(":hover")) {
+        if (currentTarget && !currentTarget.matches(":hover")) {
           dropdown.classList.add("hidden");
         }
-      }, 200);
+      }, 300); // Increased delay to 300ms for better usability
     }
   };
 
