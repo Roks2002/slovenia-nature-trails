@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Menu, X, ChevronDown, Globe } from "lucide-react";
 
 const languages = [
@@ -13,6 +13,26 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [currentLang, setCurrentLang] = useState("en");
   const [showLangDropdown, setShowLangDropdown] = useState(false);
+  const navigate = useNavigate();
+
+  const handleMouseEnter = (event: React.MouseEvent<HTMLDivElement>) => {
+    const dropdown = event.currentTarget.querySelector(".submenu");
+    if (dropdown) {
+      dropdown.classList.remove("hidden");
+    }
+  };
+
+  const handleMouseLeave = (event: React.MouseEvent<HTMLDivElement>) => {
+    const dropdown = event.currentTarget.querySelector(".submenu");
+    if (dropdown) {
+      // Add a delay before hiding the submenu
+      setTimeout(() => {
+        if (!event.currentTarget.matches(":hover")) {
+          dropdown.classList.add("hidden");
+        }
+      }, 200);
+    }
+  };
 
   return (
     <nav className="bg-white dark:bg-primary-dark shadow-lg fixed w-full z-50 transition-colors duration-300">
@@ -26,32 +46,36 @@ const Navbar = () => {
 
           {/* Desktop Menu */}
           <div className="hidden md:flex md:items-center md:space-x-8">
-            <div className="relative group">
-              <Link to="/destinations" className="text-gray-700 dark:text-white hover:text-primary flex items-center">
+            <div 
+              className="relative group"
+              onMouseEnter={handleMouseEnter}
+              onMouseLeave={handleMouseLeave}
+            >
+              <button className="text-gray-700 dark:text-white hover:text-primary flex items-center">
                 Destination Slovenia
                 <ChevronDown className="ml-1 h-4 w-4" />
-              </Link>
-              <div className="absolute hidden group-hover:block w-48 bg-white dark:bg-primary-dark shadow-lg rounded-md mt-2 transition-all duration-300">
-                <Link to="/destinations/julian-alps" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-primary transition-colors duration-200">Julian Alps</Link>
-                <Link to="/destinations/kamnik-alps" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-primary transition-colors duration-200">Kamnik-Savinja Alps</Link>
-                <Link to="/destinations/karavanke" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-primary transition-colors duration-200">Karavanke</Link>
-                <Link to="/destinations/pohorje" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-primary transition-colors duration-200">Pohorje</Link>
+              </button>
+              <div className="submenu absolute hidden w-48 bg-white dark:bg-primary-dark shadow-lg rounded-md mt-2 transition-all duration-300">
+                <Link to="/experiences/Julian Alps" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-primary transition-colors duration-200">Julian Alps</Link>
+                <Link to="/experiences/Kamnik-Savinja Alps" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-primary transition-colors duration-200">Kamnik-Savinja Alps</Link>
+                <Link to="/experiences/Karavanke" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-primary transition-colors duration-200">Karavanke</Link>
+                <Link to="/experiences/Pohorje" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-primary transition-colors duration-200">Pohorje</Link>
               </div>
             </div>
 
-            <div className="relative group">
+            <div 
+              className="relative group"
+              onMouseEnter={handleMouseEnter}
+              onMouseLeave={handleMouseLeave}
+            >
               <Link to="/experiences" className="text-gray-700 dark:text-white hover:text-primary flex items-center">
                 Experiences
                 <ChevronDown className="ml-1 h-4 w-4" />
               </Link>
-              <div className="absolute hidden group-hover:block w-48 bg-white dark:bg-primary-dark shadow-lg rounded-md mt-2 transition-all duration-300">
-                <Link to="/experiences/hiking" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-primary transition-colors duration-200">Hiking</Link>
-                <Link to="/experiences/via-ferrata" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-primary transition-colors duration-200">Via Ferrata</Link>
-                <Link to="/experiences/biking" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-primary transition-colors duration-200">Mountain Biking</Link>
-                <Link to="/experiences/climbing" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-primary transition-colors duration-200">Rock Climbing</Link>
-                <Link to="/experiences/water" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-primary transition-colors duration-200">Water Experiences</Link>
-                <Link to="/experiences/wind" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-primary transition-colors duration-200">Wind Adventures</Link>
-                <Link to="/experiences/trips" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-primary transition-colors duration-200">Trips</Link>
+              <div className="submenu absolute hidden w-48 bg-white dark:bg-primary-dark shadow-lg rounded-md mt-2 transition-all duration-300">
+                <Link to="/experiences/Hiking" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-primary transition-colors duration-200">Hiking</Link>
+                <Link to="/experiences/Via Ferrata" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-primary transition-colors duration-200">Via Ferrata</Link>
+                <Link to="/experiences/Mountain Biking" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-primary transition-colors duration-200">Mountain Biking</Link>
               </div>
             </div>
 
@@ -101,7 +125,7 @@ const Navbar = () => {
       {isOpen && (
         <div className="md:hidden bg-white dark:bg-primary-dark">
           <div className="px-2 pt-2 pb-3 space-y-1">
-            <Link to="/destinations" className="block px-3 py-2 text-gray-700 dark:text-white hover:bg-gray-100 dark:hover:bg-primary">
+            <Link to="/experiences" className="block px-3 py-2 text-gray-700 dark:text-white hover:bg-gray-100 dark:hover:bg-primary">
               Destination Slovenia
             </Link>
             <Link to="/experiences" className="block px-3 py-2 text-gray-700 dark:text-white hover:bg-gray-100 dark:hover:bg-primary">
