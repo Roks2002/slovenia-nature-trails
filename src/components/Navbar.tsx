@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { Menu, X, ChevronDown, Globe, TreePine } from "lucide-react";
 
 const languages = [
-  { code: "en", name: "Englishski" },
+  { code: "en", name: "English" },
   { code: "sl", name: "Slovenščina" },
   { code: "hr", name: "Hrvatski" },
   { code: "de", name: "Deutsch" },

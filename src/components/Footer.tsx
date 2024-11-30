@@ -12,45 +12,95 @@ const Footer = () => {
               <span className="text-xl font-semibold">Explore Slovenia</span>
             </Link>
             <p className="text-gray-300">
-              Discover the hidden gems of Slovenia with our expert-guided adventures.
+              Discover the hidden gems of Slovenia with our expert-guided
+              adventures.
             </p>
           </div>
-          
+
           <div>
             <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
             <ul className="space-y-2">
-              <li><Link to="/experiences" className="hover:text-primary-light">Experiences</Link></li>
-              <li><Link to="/stories" className="hover:text-primary-light">Stories</Link></li>
-              <li><Link to="/booking" className="hover:text-primary-light">Book a Trip</Link></li>
+              <li>
+                <Link to="/experiences" className="hover:text-primary-light">
+                  Experiences
+                </Link>
+              </li>
+              <li>
+                <Link to="/stories" className="hover:text-primary-light">
+                  Stories
+                </Link>
+              </li>
+              <li>
+                <Link to="/booking" className="hover:text-primary-light">
+                  Book a Trip
+                </Link>
+              </li>
             </ul>
           </div>
-          
+
           <div>
             <h3 className="text-lg font-semibold mb-4">Destinations</h3>
             <ul className="space-y-2">
-              <li><Link to="/destination/julian-alps" className="hover:text-primary-light">Julian Alps</Link></li>
-              <li><Link to="/destination/kamnik-savinja-alps" className="hover:text-primary-light">Kamnik-Savinja Alps</Link></li>
-              <li><Link to="/destination/karavanke" className="hover:text-primary-light">Karavanke</Link></li>
-              <li><Link to="/destination/pohorje" className="hover:text-primary-light">Pohorje</Link></li>
+              <li>
+                <Link
+                  to="/destination/julian-alps"
+                  className="hover:text-primary-light"
+                >
+                  Julian Alps
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/destination/kamnik-savinja-alps"
+                  className="hover:text-primary-light"
+                >
+                  Kamnik-Savinja Alps
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/destination/karavanke"
+                  className="hover:text-primary-light"
+                >
+                  Karavanke
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/destination/pohorje"
+                  className="hover:text-primary-light"
+                >
+                  Pohorje
+                </Link>
+              </li>
             </ul>
           </div>
-          
+
           <div>
             <h3 className="text-lg font-semibold mb-4">Contact</h3>
             <ul className="space-y-2">
-              <li>Email: info@exploreslovenia.com</li>
+              <li>Email: info@testslovenia.com</li>
               <li>Phone: +386 1 234 5678</li>
               <li className="flex space-x-4 mt-4">
-                <a href="#" className="hover:text-primary-light"><Facebook className="h-6 w-6" /></a>
-                <a href="#" className="hover:text-primary-light"><Instagram className="h-6 w-6" /></a>
-                <a href="#" className="hover:text-primary-light"><Twitter className="h-6 w-6" /></a>
+                <a href="#" className="hover:text-primary-light">
+                  <Facebook className="h-6 w-6" />
+                </a>
+                <a href="#" className="hover:text-primary-light">
+                  <Instagram className="h-6 w-6" />
+                </a>
+                <a href="#" className="hover:text-primary-light">
+                  <Twitter className="h-6 w-6" />
+                </a>
               </li>
             </ul>
           </div>
         </div>
-        
+
         <div className="border-t border-gray-700 mt-8 pt-8 text-center text-gray-300">
-          <p>&copy; {new Date().getFullYear()} Explore Slovenia. All rights reserved.</p>
+          <p>
+            &copy; {new Date().getFullYear()} Explore Slovenia. All rights
+            reserved.
+          </p>
         </div>
       </div>
     </footer>
