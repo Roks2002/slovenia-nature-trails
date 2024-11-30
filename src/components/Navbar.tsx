@@ -1,12 +1,19 @@
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { Menu, X, ChevronDown, Globe, TreePine } from "lucide-react";
+import { Link } from "react-router-dom";
+import { Menu, X, ChevronDown, Globe, TreePine, Compass } from "lucide-react";
 
 const languages = [
   { code: "en", name: "English" },
   { code: "sl", name: "Slovenščina" },
   { code: "hr", name: "Hrvatski" },
   { code: "de", name: "Deutsch" },
+];
+
+const experienceCategories = [
+  { name: "Hiking", path: "/experiences/hiking" },
+  { name: "Mountain Biking", path: "/experiences/mountain-biking" },
+  { name: "Via Ferrata", path: "/experiences/via-ferrata" },
+  { name: "Water Activities", path: "/experiences/water-activities" },
 ];
 
 const Navbar = () => {
@@ -30,17 +37,34 @@ const Navbar = () => {
             <div className="relative group">
               <button className="text-gray-700 dark:text-white hover:text-primary flex items-center py-2 px-3 rounded-md transition-colors duration-200">
                 Destination Slovenia
-                <ChevronDown className="ml-1 h-4 w-4" />
+                <ChevronDown className="ml-1 h-4 w-4 transition-transform group-hover:rotate-180" />
               </button>
               <div className="absolute hidden group-hover:block w-56 bg-white dark:bg-primary-dark shadow-lg rounded-md mt-1 py-2 transition-all duration-300">
-                <Link to="/destination/julian-alps" className="block px-4 py-2 text-sm hover:bg-gray-100 dark:hover:bg-primary transition-colors duration-200">Julian Alps</Link>
-                <Link to="/destination/kamnik-savinja-alps" className="block px-4 py-2 text-sm hover:bg-gray-100 dark:hover:bg-primary transition-colors duration-200">Kamnik-Savinja Alps</Link>
-                <Link to="/destination/karavanke" className="block px-4 py-2 text-sm hover:bg-gray-100 dark:hover:bg-primary transition-colors duration-200">Karavanke</Link>
-                <Link to="/destination/pohorje" className="block px-4 py-2 text-sm hover:bg-gray-100 dark:hover:bg-primary transition-colors duration-200">Pohorje</Link>
+                <Link to="/destination/julian-alps" className="block px-4 py-2 text-sm text-gray-700 dark:text-white hover:bg-gray-100 dark:hover:bg-primary transition-colors duration-200">Julian Alps</Link>
+                <Link to="/destination/kamnik-savinja-alps" className="block px-4 py-2 text-sm text-gray-700 dark:text-white hover:bg-gray-100 dark:hover:bg-primary transition-colors duration-200">Kamnik-Savinja Alps</Link>
+                <Link to="/destination/karavanke" className="block px-4 py-2 text-sm text-gray-700 dark:text-white hover:bg-gray-100 dark:hover:bg-primary transition-colors duration-200">Karavanke</Link>
+                <Link to="/destination/pohorje" className="block px-4 py-2 text-sm text-gray-700 dark:text-white hover:bg-gray-100 dark:hover:bg-primary transition-colors duration-200">Pohorje</Link>
               </div>
             </div>
 
-            <Link to="/experiences" className="text-gray-700 dark:text-white hover:text-primary py-2 px-3 rounded-md transition-colors duration-200">Experiences</Link>
+            <div className="relative group">
+              <button className="text-gray-700 dark:text-white hover:text-primary flex items-center py-2 px-3 rounded-md transition-colors duration-200">
+                Experiences
+                <ChevronDown className="ml-1 h-4 w-4 transition-transform group-hover:rotate-180" />
+              </button>
+              <div className="absolute hidden group-hover:block w-56 bg-white dark:bg-primary-dark shadow-lg rounded-md mt-1 py-2 transition-all duration-300">
+                {experienceCategories.map((category) => (
+                  <Link
+                    key={category.path}
+                    to={category.path}
+                    className="block px-4 py-2 text-sm text-gray-700 dark:text-white hover:bg-gray-100 dark:hover:bg-primary transition-colors duration-200"
+                  >
+                    {category.name}
+                  </Link>
+                ))}
+              </div>
+            </div>
+
             <Link to="/stories" className="text-gray-700 dark:text-white hover:text-primary py-2 px-3 rounded-md transition-colors duration-200">Stories</Link>
             <Link to="/booking" className="text-gray-700 dark:text-white hover:text-primary py-2 px-3 rounded-md transition-colors duration-200">Booking</Link>
 
@@ -87,18 +111,31 @@ const Navbar = () => {
       {isOpen && (
         <div className="md:hidden bg-white dark:bg-primary-dark">
           <div className="px-2 pt-2 pb-3 space-y-1">
-            <Link to="/experiences" className="block px-3 py-2 text-gray-700 dark:text-white hover:bg-gray-100 dark:hover:bg-primary rounded-md">
-              Destination Slovenia
-            </Link>
-            <Link to="/experiences" className="block px-3 py-2 text-gray-700 dark:text-white hover:bg-gray-100 dark:hover:bg-primary rounded-md">
-              Experiences
-            </Link>
-            <Link to="/stories" className="block px-3 py-2 text-gray-700 dark:text-white hover:bg-gray-100 dark:hover:bg-primary rounded-md">
-              Stories
-            </Link>
-            <Link to="/booking" className="block px-3 py-2 text-gray-700 dark:text-white hover:bg-gray-100 dark:hover:bg-primary rounded-md">
-              Booking
-            </Link>
+            <div className="block px-3 py-2 text-gray-700 dark:text-white">
+              <span className="font-medium">Destination Slovenia</span>
+              <div className="pl-4 mt-2 space-y-2">
+                <Link to="/destination/julian-alps" className="block px-3 py-2 text-sm text-gray-700 dark:text-white hover:bg-gray-100 dark:hover:bg-primary rounded-md">Julian Alps</Link>
+                <Link to="/destination/kamnik-savinja-alps" className="block px-3 py-2 text-sm text-gray-700 dark:text-white hover:bg-gray-100 dark:hover:bg-primary rounded-md">Kamnik-Savinja Alps</Link>
+                <Link to="/destination/karavanke" className="block px-3 py-2 text-sm text-gray-700 dark:text-white hover:bg-gray-100 dark:hover:bg-primary rounded-md">Karavanke</Link>
+                <Link to="/destination/pohorje" className="block px-3 py-2 text-sm text-gray-700 dark:text-white hover:bg-gray-100 dark:hover:bg-primary rounded-md">Pohorje</Link>
+              </div>
+            </div>
+            <div className="block px-3 py-2 text-gray-700 dark:text-white">
+              <span className="font-medium">Experiences</span>
+              <div className="pl-4 mt-2 space-y-2">
+                {experienceCategories.map((category) => (
+                  <Link
+                    key={category.path}
+                    to={category.path}
+                    className="block px-3 py-2 text-sm text-gray-700 dark:text-white hover:bg-gray-100 dark:hover:bg-primary rounded-md"
+                  >
+                    {category.name}
+                  </Link>
+                ))}
+              </div>
+            </div>
+            <Link to="/stories" className="block px-3 py-2 text-gray-700 dark:text-white hover:bg-gray-100 dark:hover:bg-primary rounded-md">Stories</Link>
+            <Link to="/booking" className="block px-3 py-2 text-gray-700 dark:text-white hover:bg-gray-100 dark:hover:bg-primary rounded-md">Booking</Link>
           </div>
         </div>
       )}
