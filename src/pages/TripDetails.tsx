@@ -17,6 +17,7 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
 import { useToast } from "@/components/ui/use-toast";
 
 const TripDetails = () => {
@@ -31,7 +32,13 @@ const TripDetails = () => {
   );
 
   if (!trip) {
-    return <div className="pt-20 px-4">Trip not found</div>;
+    return (
+      <div className="pt-20 px-4 min-h-screen">
+        <div className="max-w-7xl mx-auto text-center">
+          Trip not found
+        </div>
+      </div>
+    );
   }
 
   const handleBooking = () => {
@@ -43,6 +50,15 @@ const TripDetails = () => {
       return;
     }
     
+    if (tickets > trip.availableTickets) {
+      toast({
+        title: "Not enough tickets available",
+        description: `Only ${trip.availableTickets} tickets left`,
+        variant: "destructive",
+      });
+      return;
+    }
+
     toast({
       title: "Booking request sent!",
       description: "We will contact you soon to confirm your booking.",
@@ -59,6 +75,15 @@ const TripDetails = () => {
             className="w-full h-[400px] object-cover rounded-lg"
           />
           <div>
+            <div className="flex items-center gap-2 mb-4">
+              <Badge variant="secondary">{trip.category}</Badge>
+              <Badge variant={
+                trip.difficulty === "Easy" ? "success" :
+                trip.difficulty === "Moderate" ? "warning" : "destructive"
+              }>
+                {trip.difficulty}
+              </Badge>
+            </div>
             <h1 className="text-4xl font-bold mb-4 dark:text-white">{trip.title}</h1>
             <div className="grid grid-cols-2 gap-4 mb-6">
               <div className="dark:text-white">
@@ -70,8 +95,8 @@ const TripDetails = () => {
                 <p>{trip.location}</p>
               </div>
               <div className="dark:text-white">
-                <p className="font-semibold">Difficulty:</p>
-                <p>{trip.difficulty}</p>
+                <p className="font-semibold">Available Tickets:</p>
+                <p>{trip.availableTickets}</p>
               </div>
               <div className="dark:text-white">
                 <p className="font-semibold">Price:</p>
@@ -81,14 +106,11 @@ const TripDetails = () => {
 
             <div className="mb-6">
               <h2 className="text-xl font-semibold mb-2 dark:text-white">Best Season</h2>
-              <div className="flex gap-2">
+              <div className="flex flex-wrap gap-2">
                 {trip.bestSeason.map((month) => (
-                  <span
-                    key={month}
-                    className="bg-primary/10 px-3 py-1 rounded-full text-sm dark:text-white"
-                  >
+                  <Badge key={month} variant="outline">
                     {month}
-                  </span>
+                  </Badge>
                 ))}
               </div>
             </div>
@@ -144,30 +166,37 @@ const TripDetails = () => {
             </div>
           </div>
 
-          <h2 className="text-2xl font-semibold mb-6 dark:text-white">Similar Trips</h2>
-          <Carousel className="mb-12">
-            <CarouselContent>
-              {similarTrips.map((trip) => (
-                <CarouselItem key={trip.id} className="md:basis-1/2 lg:basis-1/3">
-                  <Card>
-                    <CardHeader>
-                      <img
-                        src={trip.image}
-                        alt={trip.title}
-                        className="w-full h-48 object-cover rounded-t-lg"
-                      />
-                    </CardHeader>
-                    <CardContent>
-                      <CardTitle>{trip.title}</CardTitle>
-                      <CardDescription>{trip.description}</CardDescription>
-                    </CardContent>
-                  </Card>
-                </CarouselItem>
-              ))}
-            </CarouselContent>
-            <CarouselPrevious />
-            <CarouselNext />
-          </Carousel>
+          {similarTrips.length > 0 && (
+            <>
+              <h2 className="text-2xl font-semibold mb-6 dark:text-white">Similar Trips</h2>
+              <Carousel className="mb-12">
+                <CarouselContent>
+                  {similarTrips.map((trip) => (
+                    <CarouselItem key={trip.id} className="md:basis-1/2 lg:basis-1/3">
+                      <Card>
+                        <CardHeader>
+                          <img
+                            src={trip.image}
+                            alt={trip.title}
+                            className="w-full h-48 object-cover rounded-t-lg"
+                          />
+                        </CardHeader>
+                        <CardContent>
+                          <CardTitle>{trip.title}</CardTitle>
+                          <CardDescription>{trip.description}</CardDescription>
+                          <div className="mt-4">
+                            <Badge variant="secondary">{trip.price}</Badge>
+                          </div>
+                        </CardContent>
+                      </Card>
+                    </CarouselItem>
+                  ))}
+                </CarouselContent>
+                <CarouselPrevious />
+                <CarouselNext />
+              </Carousel>
+            </>
+          )}
         </div>
       </div>
     </div>
