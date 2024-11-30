@@ -51,5 +51,30 @@ export const hikingTrips: Trip[] = [
       "Camera"
     ],
     fullDescription: "Experience the charm of traditional Alpine dairy farming on this scenic hike through Velika Planina. Visit authentic shepherd huts and taste local dairy products."
+  },
+  {
+    id: "hiking-3",
+    title: "Logar Valley Nature Trail",
+    description: "Discover the pristine beauty of Logar Valley.",
+    category: "Hiking",
+    duration: "1 day",
+    difficulty: "Easy",
+    price: "€69",
+    image: "https://images.unsplash.com/photo-1433086966358-54859d0ed716",
+    location: "Logar Valley",
+    bestSeason: ["April", "May", "June", "July", "August", "September"],
+    availableTickets: 20,
+    packageIncludes: [
+      "Guide",
+      "Transport",
+      "Lunch",
+      "Waterfall entrance fees"
+    ],
+    requiredGear: [
+      "Comfortable shoes",
+      "Rain jacket",
+      "Water bottle"
+    ],
+    fullDescription: "Explore one of Slovenia's most beautiful glacial valleys on this easy hiking tour. Visit stunning waterfalls and enjoy the pristine alpine environment."
   }
 ];
