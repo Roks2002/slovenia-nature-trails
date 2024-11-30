@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { Menu, X, ChevronDown, Globe, TreePine, Compass } from "lucide-react";
+import { Menu, X, ChevronDown, Globe, TreePine } from "lucide-react";
 
 const languages = [
   { code: "en", name: "English" },
@@ -39,7 +39,7 @@ const Navbar = () => {
                 Destination Slovenia
                 <ChevronDown className="ml-1 h-4 w-4 transition-transform group-hover:rotate-180" />
               </button>
-              <div className="absolute hidden group-hover:block w-56 bg-white dark:bg-primary-dark shadow-lg rounded-md mt-1 py-2 transition-all duration-300">
+              <div className="absolute top-full left-0 w-56 bg-white dark:bg-primary-dark shadow-lg rounded-md py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300">
                 <Link to="/destination/julian-alps" className="block px-4 py-2 text-sm text-gray-700 dark:text-white hover:bg-gray-100 dark:hover:bg-primary transition-colors duration-200">Julian Alps</Link>
                 <Link to="/destination/kamnik-savinja-alps" className="block px-4 py-2 text-sm text-gray-700 dark:text-white hover:bg-gray-100 dark:hover:bg-primary transition-colors duration-200">Kamnik-Savinja Alps</Link>
                 <Link to="/destination/karavanke" className="block px-4 py-2 text-sm text-gray-700 dark:text-white hover:bg-gray-100 dark:hover:bg-primary transition-colors duration-200">Karavanke</Link>
@@ -52,7 +52,7 @@ const Navbar = () => {
                 Experiences
                 <ChevronDown className="ml-1 h-4 w-4 transition-transform group-hover:rotate-180" />
               </button>
-              <div className="absolute hidden group-hover:block w-56 bg-white dark:bg-primary-dark shadow-lg rounded-md mt-1 py-2 transition-all duration-300">
+              <div className="absolute top-full left-0 w-56 bg-white dark:bg-primary-dark shadow-lg rounded-md py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300">
                 {experienceCategories.map((category) => (
                   <Link
                     key={category.path}

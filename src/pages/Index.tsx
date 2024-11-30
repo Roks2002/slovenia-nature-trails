@@ -1,13 +1,14 @@
 import { useState, useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { ArrowRight, Mountain, Bike, Waves, Wind, ChevronLeft, ChevronRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { trips } from "../data/trips";
+import ConsultationSteps from "../components/ConsultationSteps";
 
 const Index = () => {
   const [email, setEmail] = useState("");
   const [currentSlide, setCurrentSlide] = useState(0);
   const bannerRef = useRef<HTMLDivElement>(null);
-  const popularTrips = trips.slice(0, 5); // Get first 5 trips for slider
+  const popularTrips = trips.slice(0, 5);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -87,6 +88,9 @@ const Index = () => {
         </div>
       </section>
 
+      {/* Consultation Steps */}
+      <ConsultationSteps />
+
       {/* Popular Trips Slider */}
       <section className="py-16 px-4 bg-gray-50 dark:bg-primary">
         <div className="max-w-6xl mx-auto">
@@ -134,7 +138,7 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Keep existing Newsletter and Contact Form sections */}
+      {/* Newsletter Section */}
       <section className="py-16 px-4 bg-primary text-white">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-3xl font-bold mb-4">Stay Updated</h2>
