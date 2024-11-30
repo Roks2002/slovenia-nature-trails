@@ -193,5 +193,79 @@ export const trips: Trip[] = [
       "Sunscreen"
     ],
     fullDescription: "Join us for a picturesque cycling tour along the Soča River. Experience the stunning landscapes and the rich cultural heritage of the valley as you pedal through this exciting journey."
+  },
+  {
+    id: "julian-alps-2",
+    title: "Lake Bled Adventure",
+    description: "Explore the magical Lake Bled and its surroundings.",
+    category: "Julian Alps",
+    duration: "1 day",
+    difficulty: "Easy",
+    price: "€79",
+    image: "https://images.unsplash.com/photo-1482938289607-e9573fc25ebb",
+    location: "Lake Bled",
+    bestSeason: ["April", "May", "June", "July", "August", "September"],
+    availableTickets: 15,
+    packageIncludes: [
+      "Professional guide",
+      "Boat ride to the island",
+      "Castle entrance fee",
+      "Traditional cream cake tasting"
+    ],
+    requiredGear: [
+      "Comfortable walking shoes",
+      "Camera",
+      "Water bottle"
+    ],
+    fullDescription: "Experience the fairy-tale beauty of Lake Bled, visit its iconic island church, explore the medieval castle, and taste the famous Bled cream cake."
+  },
+  {
+    id: "kamnik-2",
+    title: "Logar Valley Hiking",
+    description: "Discover the pristine beauty of Logar Valley.",
+    category: "Kamnik-Savinja Alps",
+    duration: "1 day",
+    difficulty: "Moderate",
+    price: "€89",
+    image: "https://images.unsplash.com/photo-1433086966358-54859d0ed716",
+    location: "Logar Valley",
+    bestSeason: ["May", "June", "July", "August", "September"],
+    availableTickets: 12,
+    packageIncludes: [
+      "Guide",
+      "Transport",
+      "Lunch",
+      "Waterfall entrance fees"
+    ],
+    requiredGear: [
+      "Hiking boots",
+      "Backpack",
+      "Rain jacket"
+    ],
+    fullDescription: "Explore one of Slovenia's most beautiful glacial valleys, featuring stunning waterfalls and alpine meadows."
+  },
+  {
+    id: "karavanke-2",
+    title: "Mining Heritage Tour",
+    description: "Explore the rich mining history of the Karavanke mountains.",
+    category: "Karavanke",
+    duration: "1 day",
+    difficulty: "Easy",
+    price: "€69",
+    image: "https://images.unsplash.com/photo-1504893524553-b855bce32c67",
+    location: "Mežica",
+    bestSeason: ["April", "May", "June", "July", "August", "September", "October"],
+    availableTickets: 10,
+    packageIncludes: [
+      "Mine tour guide",
+      "Safety equipment",
+      "Underground train ride",
+      "Traditional miners' lunch"
+    ],
+    requiredGear: [
+      "Warm clothing",
+      "Closed-toe shoes"
+    ],
+    fullDescription: "Discover the fascinating underground world of the Karavanke mountains and learn about the region's mining heritage."
   }
 ];
