@@ -1,21 +1,24 @@
 import { Search, Calendar, Mountain } from "lucide-react";
+import { useLanguage } from "../contexts/LanguageContext";
 
 const ConsultationSteps = () => {
+  const { t } = useLanguage();
+
   const steps = [
     {
       icon: <Search className="h-12 w-12 text-primary" />,
-      title: "Search",
-      description: "Search for your favourite destination and experience"
+      title: t("search"),
+      description: t("searchDescription")
     },
     {
       icon: <Calendar className="h-12 w-12 text-primary" />,
-      title: "Book",
-      description: "Book an experience or vacation of your choice"
+      title: t("book"),
+      description: t("bookDescription")
     },
     {
       icon: <Mountain className="h-12 w-12 text-primary" />,
-      title: "Travel",
-      description: "Travel and enjoy unforgettable experiences"
+      title: t("travel"),
+      description: t("travelDescription")
     }
   ];
 
@@ -23,7 +26,7 @@ const ConsultationSteps = () => {
     <section className="py-16 px-4 bg-white dark:bg-primary-dark">
       <div className="max-w-6xl mx-auto">
         <h2 className="text-3xl font-bold text-center mb-12 dark:text-white">
-          How It Works
+          {t("howItWorks")}
         </h2>
         <div className="grid md:grid-cols-3 gap-8">
           {steps.map((step, index) => (

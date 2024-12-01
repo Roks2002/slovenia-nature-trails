@@ -1,12 +1,11 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Menu, X, ChevronDown, Globe, TreePine } from "lucide-react";
+import { useLanguage } from "../contexts/LanguageContext";
 
 const languages = [
   { code: "en", name: "English" },
   { code: "sl", name: "Slovenščina" },
-  { code: "hr", name: "Hrvatski" },
-  { code: "de", name: "Deutsch" },
 ];
 
 const experienceCategories = [
@@ -18,8 +17,8 @@ const experienceCategories = [
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [currentLang, setCurrentLang] = useState("en");
   const [showLangDropdown, setShowLangDropdown] = useState(false);
+  const { currentLanguage, setLanguage, t } = useLanguage();
 
   return (
     <nav className="bg-white/90 backdrop-blur-md dark:bg-primary-dark/90 shadow-lg fixed w-full z-50 transition-all duration-300">
@@ -32,7 +31,7 @@ const Navbar = () => {
             >
               <TreePine className="h-8 w-8 text-primary transition-transform group-hover:scale-110" />
               <span className="text-xl font-semibold text-primary dark:text-white">
-                Explore Slovenia
+                {t("home")}
               </span>
             </Link>
           </div>
@@ -41,7 +40,7 @@ const Navbar = () => {
           <div className="hidden md:flex md:items-center md:space-x-8">
             <div className="relative group">
               <button className="text-gray-700 dark:text-white hover:text-primary flex items-center py-2 px-3 rounded-md transition-colors duration-200">
-                Destination Slovenia
+                {t("destinations")}
                 <ChevronDown className="ml-1 h-4 w-4 transition-transform group-hover:rotate-180" />
               </button>
               <div className="absolute top-full left-0 w-56 bg-white dark:bg-primary-dark shadow-lg rounded-md py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300">
@@ -72,38 +71,24 @@ const Navbar = () => {
               </div>
             </div>
 
-            <div className="relative group">
-              <Link
-                to="/experiences"
-                className="text-gray-700 dark:text-white hover:text-primary flex items-center py-2 px-3 rounded-md transition-colors duration-200"
-              >
-                Experiences
-                <ChevronDown className="ml-1 h-4 w-4 transition-transform group-hover:rotate-180" />
-              </Link>
-              <div className="absolute top-full left-0 w-56 bg-white dark:bg-primary-dark shadow-lg rounded-md py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300">
-                {experienceCategories.map((category) => (
-                  <Link
-                    key={category.path}
-                    to={category.path}
-                    className="block px-4 py-2 text-sm text-gray-700 dark:text-white hover:bg-gray-100 dark:hover:bg-primary transition-colors duration-200"
-                  >
-                    {category.name}
-                  </Link>
-                ))}
-              </div>
-            </div>
+            <Link
+              to="/experiences"
+              className="text-gray-700 dark:text-white hover:text-primary py-2 px-3 rounded-md transition-colors duration-200"
+            >
+              {t("experiences")}
+            </Link>
 
             <Link
               to="/stories"
               className="text-gray-700 dark:text-white hover:text-primary py-2 px-3 rounded-md transition-colors duration-200"
             >
-              Stories
+              {t("stories")}
             </Link>
             <Link
               to="/booking"
               className="text-gray-700 dark:text-white hover:text-primary py-2 px-3 rounded-md transition-colors duration-200"
             >
-              Booking
+              {t("booking")}
             </Link>
 
             <div className="relative">
@@ -112,7 +97,7 @@ const Navbar = () => {
                 className="flex items-center text-gray-700 dark:text-white hover:text-primary py-2 px-3 rounded-md transition-colors duration-200"
               >
                 <Globe className="h-5 w-5 mr-1" />
-                <span className="uppercase">{currentLang}</span>
+                <span className="uppercase">{currentLanguage}</span>
               </button>
               {showLangDropdown && (
                 <div className="absolute right-0 mt-2 w-48 bg-white dark:bg-primary-dark shadow-lg rounded-md py-2">
@@ -120,7 +105,7 @@ const Navbar = () => {
                     <button
                       key={lang.code}
                       onClick={() => {
-                        setCurrentLang(lang.code);
+                        setLanguage(lang.code as "en" | "sl");
                         setShowLangDropdown(false);
                       }}
                       className="block w-full text-left px-4 py-2 text-sm hover:bg-gray-100 dark:hover:bg-primary transition-colors duration-200"
@@ -154,7 +139,7 @@ const Navbar = () => {
         <div className="md:hidden bg-white dark:bg-primary-dark">
           <div className="px-2 pt-2 pb-3 space-y-1">
             <div className="block px-3 py-2 text-gray-700 dark:text-white">
-              <span className="font-medium">Destination Slovenia</span>
+              <span className="font-medium">{t("destinations")}</span>
               <div className="pl-4 mt-2 space-y-2">
                 <Link
                   to="/destination/julian-alps"
@@ -183,7 +168,7 @@ const Navbar = () => {
               </div>
             </div>
             <div className="block px-3 py-2 text-gray-700 dark:text-white">
-              <span className="font-medium">Experiences</span>
+              <span className="font-medium">{t("experiences")}</span>
               <div className="pl-4 mt-2 space-y-2">
                 {experienceCategories.map((category) => (
                   <Link
@@ -200,13 +185,13 @@ const Navbar = () => {
               to="/stories"
               className="block px-3 py-2 text-gray-700 dark:text-white hover:bg-gray-100 dark:hover:bg-primary rounded-md"
             >
-              Stories
+              {t("stories")}
             </Link>
             <Link
               to="/booking"
               className="block px-3 py-2 text-gray-700 dark:text-white hover:bg-gray-100 dark:hover:bg-primary rounded-md"
             >
-              Booking
+              {t("booking")}
             </Link>
           </div>
         </div>
