@@ -86,10 +86,11 @@ const BookingForm = () => {
           <div className="space-y-2">
             <Label htmlFor="trip">Select Trip</Label>
             <Select
-              value={formData.trip}
+              required
               onValueChange={(value) => setFormData({ ...formData, trip: value })}
+              value={formData.trip}
             >
-              <SelectTrigger>
+              <SelectTrigger id="trip">
                 <SelectValue placeholder="Choose a trip or make a general inquiry" />
               </SelectTrigger>
               <SelectContent>
