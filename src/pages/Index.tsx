@@ -66,7 +66,7 @@ const Index = () => {
 
       {/* Popular Trips Slider */}
       <section className="py-16 px-4 bg-gray-50 dark:bg-primary">
-        <div className="max-w-6xl mx-auto">
+        <div className="max-w-7xl mx-auto">
           <h2 className="text-3xl font-bold text-center mb-12 dark:text-white">
             Popular Adventures
           </h2>
@@ -86,16 +86,16 @@ const Index = () => {
             <div className="overflow-hidden">
               <div
                 className="flex transition-transform duration-500 ease-in-out"
-                style={{ transform: `translateX(-${currentSlide * 100}%)` }}
+                style={{ transform: `translateX(-${currentSlide * 25}%)` }}
               >
                 {popularTrips.map((trip) => (
-                  <div key={trip.id} className="w-full flex-shrink-0 px-4">
+                  <div key={trip.id} className="w-1/4 flex-shrink-0 px-2">
                     <Link to={`/trip/${trip.id}`} className="block">
-                      <div className="bg-white dark:bg-primary-dark rounded-lg shadow-lg overflow-hidden">
-                        <img src={trip.image} alt={trip.title} className="w-full h-64 object-cover" />
+                      <div className="bg-white dark:bg-primary-dark rounded-lg shadow-lg overflow-hidden h-full">
+                        <img src={trip.image} alt={trip.title} className="w-full h-48 object-cover" />
                         <div className="p-6">
                           <h3 className="text-xl font-semibold mb-2 dark:text-white">{trip.title}</h3>
-                          <p className="text-gray-600 dark:text-gray-300 mb-4">{trip.description}</p>
+                          <p className="text-gray-600 dark:text-gray-300 mb-4 line-clamp-2">{trip.description}</p>
                           <div className="flex justify-between items-center">
                             <span className="text-primary dark:text-primary-light font-bold">{trip.price}</span>
                             <span className="text-gray-500 dark:text-gray-400">{trip.duration}</span>
