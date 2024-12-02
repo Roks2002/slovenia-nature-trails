@@ -1,11 +1,14 @@
-import { useState, useRef, useEffect } from "react";
-import { Link } from "react-router-dom";
-import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
-import { trips } from "../data/trips";
+import { useRef, useEffect } from "react";
+import HeroSection from "../components/HeroSection";
+import NewsletterSection from "../components/NewsletterSection";
+import ContactForm from "../components/ContactForm";
 import ConsultationSteps from "../components/ConsultationSteps";
+import { trips } from "../data/trips";
+import { ChevronLeft, ChevronRight } from "lucide-react";
+import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const Index = () => {
-  const [email, setEmail] = useState("");
   const [currentSlide, setCurrentSlide] = useState(0);
   const bannerRef = useRef<HTMLDivElement>(null);
   const popularTrips = trips.slice(0, 5);
@@ -18,52 +21,23 @@ const Index = () => {
       }
     };
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-
-  const handleSubscribe = (e: React.FormEvent) => {
-    e.preventDefault();
-    console.log("Subscribed:", email);
-    setEmail("");
-  };
 
   const nextSlide = () => {
     setCurrentSlide((prev) => (prev + 1) % popularTrips.length);
   };
 
   const prevSlide = () => {
-    setCurrentSlide((prev) => (prev - 1 + popularTrips.length) % popularTrips.length);
+    setCurrentSlide(
+      (prev) => (prev - 1 + popularTrips.length) % popularTrips.length
+    );
   };
 
   return (
     <div className="min-h-screen bg-white dark:bg-primary-dark">
-      {/* Hero Section with Parallax */}
-      <div className="relative h-screen overflow-hidden">
-        <div ref={bannerRef} className="absolute inset-0">
-          <img
-            src="https://images.unsplash.com/photo-1469474968028-56623f02e42e"
-            alt="Slovenia Landscape"
-            className="w-full h-full object-cover"
-          />
-        </div>
-        <div className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
-          <div className="text-center text-white p-4">
-            <h1 className="text-5xl md:text-6xl font-bold mb-6 animate-fade-in">
-              Discover Slovenia
-            </h1>
-            <p className="text-xl md:text-2xl mb-8 animate-slide-in">
-              Experience the natural beauty of Europe's hidden gem
-            </p>
-            <Link
-              to="/experiences"
-              className="bg-primary hover:bg-primary-dark text-white font-bold py-3 px-8 rounded-full transition duration-300"
-            >
-              Start Your Adventure
-            </Link>
-          </div>
-        </div>
-      </div>
+      <HeroSection />
 
       {/* Slovenia's Beauty Section */}
       <section className="py-16 px-4 bg-white dark:bg-primary-dark">
@@ -88,7 +62,6 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Consultation Steps */}
       <ConsultationSteps />
 
       {/* Popular Trips Slider */}
@@ -138,122 +111,113 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Newsletter Section */}
-      <section className="py-16 px-4 bg-primary text-white">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl font-bold mb-4">Stay Updated</h2>
-          <p className="mb-8">Subscribe to our newsletter for the latest adventures and special offers</p>
-          <form onSubmit={handleSubscribe} className="flex flex-col md:flex-row gap-4 justify-center">
-            <input
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              placeholder="Enter your email"
-              className="px-6 py-3 rounded-full text-gray-900 w-full md:w-96"
-              required
-            />
-            <button
-              type="submit"
-              className="bg-white text-primary hover:bg-gray-100 font-bold py-3 px-8 rounded-full transition duration-300"
-            >
-              Subscribe
-            </button>
-          </form>
-        </div>
-      </section>
+      <NewsletterSection />
 
-      {/* Contact Form */}
+      {/* Contact Form Section */}
       <section className="py-16 px-4 bg-gray-50 dark:bg-primary">
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-7xl mx-auto">
           <h2 className="text-3xl font-bold text-center mb-6 dark:text-white">
             Contact Us
           </h2>
           <p className="text-center text-gray-600 dark:text-gray-300 mb-12 max-w-2xl mx-auto">
-            Have questions about our adventures or need help planning your trip? 
+            Have questions about our adventures or need help planning your trip?
             We're here to help you create unforgettable experiences in Slovenia.
           </p>
           
-          <div className="grid md:grid-cols-2 gap-12 mb-12">
-            <div className="space-y-6">
+          <div className="grid md:grid-cols-2 gap-12">
+            <div className="space-y-8">
               <div className="flex items-center space-x-4">
                 <div className="bg-primary rounded-full p-3">
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-6 w-6 text-white"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                    />
                   </svg>
                 </div>
                 <div>
-                  <h3 className="font-semibold text-lg dark:text-white">Email Us</h3>
-                  <p className="text-gray-600 dark:text-gray-300">info@testslovenia.com</p>
-                </div>
-              </div>
-              
-              <div className="flex items-center space-x-4">
-                <div className="bg-primary rounded-full p-3">
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-                  </svg>
-                </div>
-                <div>
-                  <h3 className="font-semibold text-lg dark:text-white">Call Us</h3>
-                  <p className="text-gray-600 dark:text-gray-300">+386 1 234 5678</p>
+                  <h3 className="font-semibold text-lg dark:text-white">
+                    Email Us
+                  </h3>
+                  <p className="text-gray-600 dark:text-gray-300">
+                    info@testslovenia.com
+                  </p>
                 </div>
               </div>
 
               <div className="flex items-center space-x-4">
                 <div className="bg-primary rounded-full p-3">
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-6 w-6 text-white"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
+                    />
                   </svg>
                 </div>
                 <div>
-                  <h3 className="font-semibold text-lg dark:text-white">Visit Us</h3>
-                  <p className="text-gray-600 dark:text-gray-300">Ljubljana, Slovenia</p>
+                  <h3 className="font-semibold text-lg dark:text-white">
+                    Call Us
+                  </h3>
+                  <p className="text-gray-600 dark:text-gray-300">
+                    +386 1 234 5678
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex items-center space-x-4">
+                <div className="bg-primary rounded-full p-3">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-6 w-6 text-white"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
+                    />
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
+                    />
+                  </svg>
+                </div>
+                <div>
+                  <h3 className="font-semibold text-lg dark:text-white">
+                    Visit Us
+                  </h3>
+                  <p className="text-gray-600 dark:text-gray-300">
+                    Ljubljana, Slovenia
+                  </p>
                 </div>
               </div>
             </div>
 
-            <form className="space-y-6 bg-white dark:bg-primary-dark p-6 rounded-lg shadow-lg">
-              <div className="grid md:grid-cols-2 gap-6">
-                <input
-                  type="text"
-                  placeholder="Your Name"
-                  className="w-full px-4 py-3 rounded-lg border dark:bg-primary-dark dark:text-white dark:border-gray-600"
-                  required
-                />
-                <input
-                  type="email"
-                  placeholder="Your Email"
-                  className="w-full px-4 py-3 rounded-lg border dark:bg-primary-dark dark:text-white dark:border-gray-600"
-                  required
-                />
-              </div>
-              <input
-                type="text"
-                placeholder="Subject"
-                className="w-full px-4 py-3 rounded-lg border dark:bg-primary-dark dark:text-white dark:border-gray-600"
-                required
-              />
-              <textarea
-                placeholder="Your Message"
-                rows={6}
-                className="w-full px-4 py-3 rounded-lg border dark:bg-primary-dark dark:text-white dark:border-gray-600"
-                required
-              ></textarea>
-              <div className="text-center">
-                <button
-                  type="submit"
-                  className="bg-primary hover:bg-primary-dark text-white font-bold py-3 px-8 rounded-full transition duration-300"
-                >
-                  Send Message
-                </button>
-              </div>
-            </form>
+            <ContactForm />
           </div>
         </div>
       </section>
-
-      {/* Footer Section Here */}
     </div>
   );
 };
