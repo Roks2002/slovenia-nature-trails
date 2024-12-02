@@ -27,7 +27,7 @@ export const MobileMenu = ({ isOpen }: MobileMenuProps) => {
         </Link>
         <Link
           to="/journey-finder"
-          className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-white hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800"
+          className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-white hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800 border border-primary/20"
         >
           Find Your Journey
         </Link>

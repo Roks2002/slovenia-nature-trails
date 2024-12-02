@@ -33,7 +33,7 @@ const Navbar = () => {
             <ExperiencesMenu />
             <Link
               to="/journey-finder"
-              className="text-gray-700 dark:text-white hover:text-primary py-2 px-3 rounded-md transition-colors duration-200"
+              className="text-gray-700 dark:text-white hover:text-primary py-2 px-3 rounded-md transition-colors duration-200 border border-primary/20 hover:border-primary/40"
             >
               Find Your Journey
             </Link>
