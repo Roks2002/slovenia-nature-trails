@@ -13,6 +13,7 @@ import Stories from "./pages/Stories";
 import StoryDetails from "./pages/StoryDetails";
 import TripDetails from "./pages/TripDetails";
 import Destination from "./pages/Destination";
+import JourneyFinder from "./pages/JourneyFinder";
 
 const queryClient = new QueryClient();
 
@@ -35,6 +36,7 @@ const App = () => (
                 <Route path="/stories" element={<Stories />} />
                 <Route path="/stories/:id" element={<StoryDetails />} />
                 <Route path="/destination/:region" element={<Destination />} />
+                <Route path="/journey-finder" element={<JourneyFinder />} />
               </Routes>
             </main>
             <Footer />
