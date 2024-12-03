@@ -9,7 +9,7 @@ const Footer = () => {
           <div className="space-y-4">
             <Link to="/" className="flex items-center space-x-2">
               <TreePine className="h-8 w-8" />
-              <span className="text-xl font-semibold">Explore Slovenia</span>
+              <span className="text-xl font-semibold">Visit Slovenia</span>
             </Link>
             <p className="text-gray-300">
               Discover the hidden gems of Slovenia with our expert-guided

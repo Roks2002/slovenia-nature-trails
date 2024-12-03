@@ -13,7 +13,7 @@ const HeroSection = () => {
       <div className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
         <div className="text-center text-white p-4">
           <h1 className="text-5xl md:text-6xl font-bold mb-6 animate-fade-in">
-            Discover Slovenia
+            Visit Slovenia
           </h1>
           <p className="text-xl md:text-2xl mb-8 animate-slide-in">
             Experience the natural beauty of Europe's hidden gem

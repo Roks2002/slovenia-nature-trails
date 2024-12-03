@@ -1,7 +1,7 @@
 export const translations = {
   en: {
     // Navigation
-    home: "Explore Slovenia",
+    home: "Visit Slovenia",
     experiences: "Experiences",
     stories: "Stories",
     booking: "Booking",
@@ -36,7 +36,7 @@ export const translations = {
   },
   sl: {
     // Navigation
-    home: "Raziskujte Slovenijo",
+    home: "Obiščite Slovenijo",
     experiences: "Doživetja",
     stories: "Zgodbe",
     booking: "Rezervacije",

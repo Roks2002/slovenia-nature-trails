@@ -22,7 +22,7 @@ const Navbar = () => {
             >
               <TreePine className="h-8 w-8 text-primary transition-transform group-hover:scale-110" />
               <span className="text-xl font-semibold text-primary dark:text-white">
-                {t("home")}
+                Visit Slovenia
               </span>
             </Link>
           </div>
