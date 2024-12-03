@@ -22,12 +22,14 @@ const SloveniaMap = () => {
   }, []);
 
   return (
-    <div className="relative w-full h-[600px] bg-gray-50 dark:bg-primary overflow-hidden">
-      <img
-        src="/slovenia-map.svg"
-        alt="Slovenia Map"
-        className="absolute inset-0 w-full h-full object-contain p-8"
-      />
+    <div className="relative w-full h-[600px] bg-gradient-to-b from-primary/5 to-primary/10 dark:from-primary-dark/20 dark:to-primary-dark/30 overflow-hidden rounded-lg">
+      <div className="absolute inset-0 flex items-center justify-center">
+        <img
+          src="/slovenia-map.svg"
+          alt="Slovenia Map"
+          className="w-4/5 h-4/5 object-contain"
+        />
+      </div>
       <div className="absolute inset-0">
         {trips.map((trip) => (
           <Link
@@ -42,7 +44,9 @@ const SloveniaMap = () => {
             } transition-all duration-500 ease-out`}
           >
             <div className="relative group">
-              <div className="w-4 h-4 bg-primary dark:bg-primary-light rounded-full animate-pulse" />
+              <div className="w-4 h-4 bg-primary dark:bg-primary-light rounded-full shadow-lg shadow-primary/20 dark:shadow-primary-light/20">
+                <div className="absolute w-full h-full rounded-full animate-ping bg-primary/30 dark:bg-primary-light/30" />
+              </div>
               <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
                 <div className="bg-white dark:bg-primary-dark rounded-lg shadow-lg p-2 whitespace-nowrap">
                   <p className="text-sm font-medium text-gray-900 dark:text-white">

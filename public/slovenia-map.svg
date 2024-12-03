@@ -1,18 +1,48 @@
 <svg width="800" height="600" viewBox="0 0 800 600" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <path d="M150,300 C150,300 250,200 400,200 C550,200 650,300 650,300 C650,300 550,400 400,400 C250,400 150,300 150,300 Z" 
-        stroke="currentColor" 
-        stroke-width="2" 
-        fill="none" 
-        class="path-animation" />
+  <!-- Slovenia outline shape -->
+  <path 
+    d="M400,150 C450,150 500,170 550,200 C600,230 650,270 680,320 C710,370 720,420 700,470 C680,520 640,550 590,570 C540,590 480,600 420,590 C360,580 310,560 270,530 C230,500 200,460 180,410 C160,360 150,310 160,260 C170,210 200,170 240,140 C280,110 340,100 400,150 Z"
+    stroke="currentColor" 
+    stroke-width="2" 
+    fill="none" 
+    class="path-animation"
+  />
+  
+  <!-- Mountains silhouette -->
+  <path 
+    d="M300,400 L350,300 L400,380 L450,280 L500,400"
+    stroke="currentColor" 
+    stroke-width="1" 
+    fill="none" 
+    class="mountains-animation"
+    opacity="0.3"
+  />
+  
   <style>
     .path-animation {
+      stroke-dasharray: 1500;
+      stroke-dashoffset: 1500;
+      animation: draw 3s ease forwards;
+    }
+    
+    .mountains-animation {
       stroke-dasharray: 1000;
       stroke-dashoffset: 1000;
-      animation: draw 2s ease forwards;
+      animation: draw 2s ease forwards 1s;
     }
+    
     @keyframes draw {
       to {
         stroke-dashoffset: 0;
+      }
+    }
+    
+    @keyframes fade {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
       }
     }
   </style>
