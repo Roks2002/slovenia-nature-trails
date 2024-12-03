@@ -1,11 +1,11 @@
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useState } from "react";
 import HeroSection from "../components/HeroSection";
 import NewsletterSection from "../components/NewsletterSection";
 import ContactForm from "../components/ContactForm";
 import ConsultationSteps from "../components/ConsultationSteps";
+import SloveniaMap from "../components/SloveniaMap";
 import { trips } from "../data/trips";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import { useState } from "react";
 import { Link } from "react-router-dom";
 
 const Index = () => {
@@ -39,30 +39,18 @@ const Index = () => {
     <div className="min-h-screen bg-white dark:bg-primary-dark">
       <HeroSection />
 
-      {/* Slovenia's Beauty Section */}
-      <section className="py-16 px-4 bg-white dark:bg-primary-dark">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl font-bold text-center mb-12 dark:text-white">
-            Slovenia's Hidden Gems
+      {/* Slovenia Map Section */}
+      <section className="py-16">
+        <div className="max-w-7xl mx-auto px-4">
+          <h2 className="text-3xl font-bold text-center mb-8 dark:text-white animate-fade-in">
+            Discover Our Trails
           </h2>
-          <div className="grid md:grid-cols-2 gap-8">
-            <div className="space-y-6">
-              <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
-                Nestled between the Alps and the Adriatic Sea, Slovenia is a land of extraordinary natural diversity. From pristine lakes and rushing rivers to majestic mountains and mysterious caves, every corner of this small but mighty country holds a new wonder to discover.
-              </p>
-              <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
-                Our carefully curated experiences take you beyond the typical tourist paths to discover the authentic heart of Slovenia. Whether you're seeking adventure in the Julian Alps, tranquility in the Logar Valley, or cultural immersion in charming villages, we'll help you uncover the true essence of this remarkable destination.
-              </p>
-            </div>
-            <div className="grid grid-cols-2 gap-4">
-              <img src="https://images.unsplash.com/photo-1458668383970-8ddd3927deed" alt="Slovenia Nature" className="rounded-lg object-cover h-48 w-full" />
-              <img src="https://images.unsplash.com/photo-1501854140801-50d01698950b" alt="Slovenia Mountains" className="rounded-lg object-cover h-48 w-full" />
-            </div>
-          </div>
+          <p className="text-center text-gray-600 dark:text-gray-300 mb-12 max-w-2xl mx-auto animate-fade-in">
+            Explore the diverse landscapes of Slovenia through our carefully curated trails
+          </p>
+          <SloveniaMap />
         </div>
       </section>
-
-      <ConsultationSteps />
 
       {/* Popular Trips Slider */}
       <section className="py-16 px-4 bg-gray-50 dark:bg-primary">
