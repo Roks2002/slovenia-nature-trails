@@ -1,5 +1,8 @@
 import { Link } from "react-router-dom";
 import { useLanguage } from "../../contexts/LanguageContext";
+import { useSession, useSupabaseClient } from "@supabase/auth-helpers-react";
+import { Button } from "../ui/button";
+import { useToast } from "../ui/use-toast";
 
 interface MobileMenuProps {
   isOpen: boolean;
@@ -7,6 +10,24 @@ interface MobileMenuProps {
 
 export const MobileMenu = ({ isOpen }: MobileMenuProps) => {
   const { t } = useLanguage();
+  const session = useSession();
+  const supabase = useSupabaseClient();
+  const { toast } = useToast();
+
+  const handleSignOut = async () => {
+    const { error } = await supabase.auth.signOut();
+    if (error) {
+      toast({
+        title: "Error signing out",
+        description: error.message,
+        variant: "destructive",
+      });
+    } else {
+      toast({
+        title: "Signed out successfully",
+      });
+    }
+  };
 
   if (!isOpen) return null;
 
@@ -43,6 +64,32 @@ export const MobileMenu = ({ isOpen }: MobileMenuProps) => {
         >
           {t("booking")}
         </Link>
+        
+        {/* Auth Links */}
+        {session ? (
+          <Button
+            variant="outline"
+            onClick={handleSignOut}
+            className="w-full justify-start text-left"
+          >
+            Sign Out
+          </Button>
+        ) : (
+          <>
+            <Link
+              to="/auth?tab=login"
+              className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-white hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800"
+            >
+              Login
+            </Link>
+            <Link
+              to="/auth?tab=signup"
+              className="block px-3 py-2 rounded-md text-base font-medium bg-primary text-white hover:bg-primary/90"
+            >
+              Sign Up
+            </Link>
+          </>
+        )}
       </div>
     </div>
   );

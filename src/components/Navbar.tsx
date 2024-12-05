@@ -6,10 +6,31 @@ import { DestinationsMenu } from "./navbar/DestinationsMenu";
 import { ExperiencesMenu } from "./navbar/ExperiencesMenu";
 import { LanguageSelector } from "./navbar/LanguageSelector";
 import { MobileMenu } from "./navbar/MobileMenu";
+import { useSession, useSupabaseClient } from "@supabase/auth-helpers-react";
+import { Button } from "./ui/button";
+import { useToast } from "./ui/use-toast";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const { t } = useLanguage();
+  const session = useSession();
+  const supabase = useSupabaseClient();
+  const { toast } = useToast();
+
+  const handleSignOut = async () => {
+    const { error } = await supabase.auth.signOut();
+    if (error) {
+      toast({
+        title: "Error signing out",
+        description: error.message,
+        variant: "destructive",
+      });
+    } else {
+      toast({
+        title: "Signed out successfully",
+      });
+    }
+  };
 
   return (
     <nav className="bg-white/90 backdrop-blur-md dark:bg-primary-dark/90 shadow-lg fixed w-full z-50 transition-all duration-300">
@@ -50,6 +71,32 @@ const Navbar = () => {
               {t("booking")}
             </Link>
             <LanguageSelector />
+            
+            {/* Auth Buttons */}
+            {session ? (
+              <Button
+                variant="outline"
+                onClick={handleSignOut}
+                className="ml-4"
+              >
+                Sign Out
+              </Button>
+            ) : (
+              <div className="flex items-center space-x-4">
+                <Link
+                  to="/auth?tab=login"
+                  className="text-gray-700 dark:text-white hover:text-primary py-2 px-3 rounded-md transition-colors duration-200"
+                >
+                  Login
+                </Link>
+                <Link
+                  to="/auth?tab=signup"
+                  className="bg-primary text-white py-2 px-4 rounded-md hover:bg-primary/90 transition-colors duration-200"
+                >
+                  Sign Up
+                </Link>
+              </div>
+            )}
           </div>
 
           {/* Mobile menu button */}
