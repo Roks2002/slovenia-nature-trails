@@ -22,6 +22,14 @@ export const AuthUI = () => {
           },
         }}
         providers={["google", "github"]}
+        localization={{
+          variables: {
+            sign_up: {
+              password_input_label: "Password (minimum 6 characters)",
+              password_input_placeholder: "Enter your password (min. 6 characters)",
+            },
+          },
+        }}
       />
     </div>
   );
