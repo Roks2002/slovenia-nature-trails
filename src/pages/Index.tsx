@@ -1,17 +1,16 @@
-import { useRef, useEffect, useState } from "react";
+import { useRef, useEffect } from "react";
+import { useSession } from "@supabase/auth-helpers-react";
 import HeroSection from "../components/HeroSection";
 import NewsletterSection from "../components/NewsletterSection";
 import ContactForm from "../components/ContactForm";
 import ConsultationSteps from "../components/ConsultationSteps";
 import SloveniaMap from "../components/SloveniaMap";
-import { trips } from "../data/trips";
-import { ChevronLeft, ChevronRight } from "lucide-react";
-import { Link } from "react-router-dom";
+import { AuthUI } from "../components/auth/AuthUI";
+import { PopularTrips } from "../components/home/PopularTrips";
 
 const Index = () => {
-  const [currentSlide, setCurrentSlide] = useState(0);
   const bannerRef = useRef<HTMLDivElement>(null);
-  const popularTrips = trips.slice(0, 5);
+  const session = useSession();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -25,15 +24,13 @@ const Index = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const nextSlide = () => {
-    setCurrentSlide((prev) => (prev + 1) % popularTrips.length);
-  };
-
-  const prevSlide = () => {
-    setCurrentSlide(
-      (prev) => (prev - 1 + popularTrips.length) % popularTrips.length
+  if (!session) {
+    return (
+      <div className="min-h-screen bg-gray-50 dark:bg-gray-900 flex items-center justify-center px-4">
+        <AuthUI />
+      </div>
     );
-  };
+  }
 
   return (
     <div className="min-h-screen bg-white dark:bg-primary-dark">
@@ -46,59 +43,14 @@ const Index = () => {
             Discover Our Trails
           </h2>
           <p className="text-center text-gray-600 dark:text-gray-300 mb-12 max-w-2xl mx-auto animate-fade-in">
-            Explore the diverse landscapes of Slovenia through our carefully curated trails
+            Explore the diverse landscapes of Slovenia through our carefully curated
+            trails
           </p>
           <SloveniaMap />
         </div>
       </section>
 
-      {/* Popular Trips Slider */}
-      <section className="py-16 px-4 bg-gray-50 dark:bg-primary">
-        <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl font-bold text-center mb-12 dark:text-white">
-            Popular Adventures
-          </h2>
-          <div className="relative">
-            <button
-              onClick={prevSlide}
-              className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-white/80 dark:bg-primary-dark/80 p-2 rounded-full shadow-lg"
-            >
-              <ChevronLeft className="h-6 w-6" />
-            </button>
-            <button
-              onClick={nextSlide}
-              className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-white/80 dark:bg-primary-dark/80 p-2 rounded-full shadow-lg"
-            >
-              <ChevronRight className="h-6 w-6" />
-            </button>
-            <div className="overflow-hidden">
-              <div
-                className="flex transition-transform duration-500 ease-in-out"
-                style={{ transform: `translateX(-${currentSlide * 25}%)` }}
-              >
-                {popularTrips.map((trip) => (
-                  <div key={trip.id} className="w-1/4 flex-shrink-0 px-2">
-                    <Link to={`/trip/${trip.id}`} className="block">
-                      <div className="bg-white dark:bg-primary-dark rounded-lg shadow-lg overflow-hidden h-full">
-                        <img src={trip.image} alt={trip.title} className="w-full h-48 object-cover" />
-                        <div className="p-6">
-                          <h3 className="text-xl font-semibold mb-2 dark:text-white">{trip.title}</h3>
-                          <p className="text-gray-600 dark:text-gray-300 mb-4 line-clamp-2">{trip.description}</p>
-                          <div className="flex justify-between items-center">
-                            <span className="text-primary dark:text-primary-light font-bold">{trip.price}</span>
-                            <span className="text-gray-500 dark:text-gray-400">{trip.duration}</span>
-                          </div>
-                        </div>
-                      </div>
-                    </Link>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
+      <PopularTrips />
       <NewsletterSection />
 
       {/* Contact Form Section */}
@@ -111,7 +63,7 @@ const Index = () => {
             Have questions about our adventures or need help planning your trip?
             We're here to help you create unforgettable experiences in Slovenia.
           </p>
-          
+
           <div className="grid md:grid-cols-2 gap-12">
             <div className="space-y-8">
               <div className="flex items-center space-x-4">
