@@ -1,16 +1,13 @@
 import { useRef, useEffect } from "react";
-import { useSession } from "@supabase/auth-helpers-react";
 import HeroSection from "../components/HeroSection";
 import NewsletterSection from "../components/NewsletterSection";
 import ContactForm from "../components/ContactForm";
 import ConsultationSteps from "../components/ConsultationSteps";
 import SloveniaMap from "../components/SloveniaMap";
-import { AuthUI } from "../components/auth/AuthUI";
 import { PopularTrips } from "../components/home/PopularTrips";
 
 const Index = () => {
   const bannerRef = useRef<HTMLDivElement>(null);
-  const session = useSession();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -23,14 +20,6 @@ const Index = () => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-
-  if (!session) {
-    return (
-      <div className="min-h-screen bg-gray-50 dark:bg-gray-900 flex items-center justify-center px-4">
-        <AuthUI />
-      </div>
-    );
-  }
 
   return (
     <div className="min-h-screen bg-white dark:bg-primary-dark">

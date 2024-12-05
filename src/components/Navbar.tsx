@@ -72,7 +72,7 @@ const Navbar = () => {
             </Link>
             <LanguageSelector />
             
-            {/* Auth Buttons */}
+            {/* Auth Button */}
             {session ? (
               <Button
                 variant="outline"
@@ -82,20 +82,12 @@ const Navbar = () => {
                 Sign Out
               </Button>
             ) : (
-              <div className="flex items-center space-x-4">
-                <Link
-                  to="/auth?tab=login"
-                  className="text-gray-700 dark:text-white hover:text-primary py-2 px-3 rounded-md transition-colors duration-200"
-                >
-                  Login
-                </Link>
-                <Link
-                  to="/auth?tab=signup"
-                  className="bg-primary text-white py-2 px-4 rounded-md hover:bg-primary/90 transition-colors duration-200"
-                >
-                  Sign Up
-                </Link>
-              </div>
+              <Link
+                to="/auth"
+                className="bg-primary text-white py-2 px-4 rounded-md hover:bg-primary/90 transition-colors duration-200"
+              >
+                Sign In
+              </Link>
             )}
           </div>
 
