@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Menu, X, TreePine } from "lucide-react";
 import { useLanguage } from "../contexts/LanguageContext";
 import { DestinationsMenu } from "./navbar/DestinationsMenu";
@@ -16,6 +16,7 @@ const Navbar = () => {
   const session = useSession();
   const supabase = useSupabaseClient();
   const { toast } = useToast();
+  const navigate = useNavigate();
 
   const handleSignOut = async () => {
     const { error } = await supabase.auth.signOut();
@@ -30,6 +31,10 @@ const Navbar = () => {
         title: "Signed out successfully",
       });
     }
+  };
+
+  const handleAuthClick = () => {
+    navigate("/auth");
   };
 
   return (
@@ -82,12 +87,12 @@ const Navbar = () => {
                 Sign Out
               </Button>
             ) : (
-              <Link
-                to="/auth"
-                className="bg-primary text-white py-2 px-4 rounded-md hover:bg-primary/90 transition-colors duration-200"
+              <Button
+                onClick={handleAuthClick}
+                className="bg-primary text-white hover:bg-primary/90"
               >
                 Sign In
-              </Link>
+              </Button>
             )}
           </div>
 

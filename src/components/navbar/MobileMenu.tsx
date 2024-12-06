@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useLanguage } from "../../contexts/LanguageContext";
 import { useSession, useSupabaseClient } from "@supabase/auth-helpers-react";
 import { Button } from "../ui/button";
@@ -13,6 +13,7 @@ export const MobileMenu = ({ isOpen }: MobileMenuProps) => {
   const session = useSession();
   const supabase = useSupabaseClient();
   const { toast } = useToast();
+  const navigate = useNavigate();
 
   const handleSignOut = async () => {
     const { error } = await supabase.auth.signOut();
@@ -27,6 +28,10 @@ export const MobileMenu = ({ isOpen }: MobileMenuProps) => {
         title: "Signed out successfully",
       });
     }
+  };
+
+  const handleAuthClick = () => {
+    navigate("/auth");
   };
 
   if (!isOpen) return null;
@@ -65,7 +70,7 @@ export const MobileMenu = ({ isOpen }: MobileMenuProps) => {
           {t("booking")}
         </Link>
         
-        {/* Auth Links */}
+        {/* Auth Button */}
         {session ? (
           <Button
             variant="outline"
@@ -75,20 +80,12 @@ export const MobileMenu = ({ isOpen }: MobileMenuProps) => {
             Sign Out
           </Button>
         ) : (
-          <>
-            <Link
-              to="/auth?tab=login"
-              className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-white hover:text-primary hover:bg-gray-50 dark:hover:bg-gray-800"
-            >
-              Login
-            </Link>
-            <Link
-              to="/auth?tab=signup"
-              className="block px-3 py-2 rounded-md text-base font-medium bg-primary text-white hover:bg-primary/90"
-            >
-              Sign Up
-            </Link>
-          </>
+          <Button
+            onClick={handleAuthClick}
+            className="w-full bg-primary text-white hover:bg-primary/90"
+          >
+            Sign In
+          </Button>
         )}
       </div>
     </div>
