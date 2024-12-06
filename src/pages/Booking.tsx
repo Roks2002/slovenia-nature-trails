@@ -13,7 +13,7 @@ const Booking = () => {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8 mb-12">
+          <div className="max-w-2xl mx-auto grid md:grid-cols-3 gap-4 sm:gap-6 md:gap-8 mb-12">
             <div className="flex items-start space-x-3">
               <MapPin className="w-6 h-6 text-primary mt-1" />
               <div>
