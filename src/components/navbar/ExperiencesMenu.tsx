@@ -14,10 +14,13 @@ export const ExperiencesMenu = () => {
   
   return (
     <div className="relative group">
-      <button className="text-gray-700 dark:text-white hover:text-primary flex items-center py-2 px-3 rounded-md transition-colors duration-200">
+      <Link 
+        to="/experiences"
+        className="text-gray-700 dark:text-white hover:text-primary flex items-center py-2 px-3 rounded-md transition-colors duration-200"
+      >
         {t("experiences")}
         <ChevronDown className="ml-1 h-4 w-4 transition-transform group-hover:rotate-180" />
-      </button>
+      </Link>
       <div className="absolute top-full left-0 w-56 bg-white dark:bg-primary-dark shadow-lg rounded-md py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300">
         {experienceCategories.map((category) => (
           <Link
